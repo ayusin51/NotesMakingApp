@@ -20,7 +20,7 @@ public class AddNotes extends AppCompatActivity {
             public void onClick(View view) {
                 EditText note = findViewById(R.id.note);
                 String value = note.getText().toString();
-
+                note.setText("");
                 DBActivity db = new DBActivity(getApplicationContext());
 
                 db.AddNote(value);

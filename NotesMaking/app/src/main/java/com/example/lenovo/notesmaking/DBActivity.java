@@ -17,13 +17,13 @@ public class DBActivity {
 
     public DBActivity(Context context) {
         this.context = context;
-        db = context.openOrCreateDatabase("userDB",MODE_PRIVATE,null);
+        db = context.openOrCreateDatabase("noteDB",MODE_PRIVATE,null);
     }
 
     void AddNote(String notes){
 
         try {
-            SQLiteDatabase db = context.openOrCreateDatabase("notesDB", MODE_PRIVATE, null);
+            //SQLiteDatabase db = context.openOrCreateDatabase("notesDB", MODE_PRIVATE, null);
             db.execSQL("create table if not exists noteList (text VARCHAR)");
 
 
@@ -42,12 +42,14 @@ public class DBActivity {
 
         ArrayList<String> notes = new ArrayList<>();
         try{
+            //SQLiteDatabase db = context.openOrCreateDatabase("notesDB", MODE_PRIVATE, null);
             Cursor c = db.rawQuery("SELECT * FROM noteList",null);
             if(c.moveToFirst()) {
                 do {
-                    int index = c.getColumnIndex("notes");
+                    int index = c.getColumnIndex("text");
+
                     String note = c.getString(index);
-                    //   Log.d("username",note);
+                    Log.d("note",note);
                     notes.add(note);
                 } while (c.moveToNext());
                 Toast.makeText(context, "Notes got successfully", Toast.LENGTH_SHORT).show();

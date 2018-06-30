@@ -2,6 +2,7 @@ package com.example.lenovo.notesmaking;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -20,8 +21,11 @@ public class ViewNotes extends AppCompatActivity {
 
         ArrayList<String> list2 = db.getNotes();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, list2);
+        Log.d("list", list2.get(0));
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, list2);
+            list.setAdapter(adapter);
 
-        list.setAdapter(adapter);
+
+
     }
 }

@@ -2,6 +2,10 @@ package com.example.lenovo.notesmaking;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class ViewNotes extends AppCompatActivity {
 
@@ -10,6 +14,14 @@ public class ViewNotes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_notes);
 
+        DBActivity db = new DBActivity(getApplicationContext());
 
+        ListView list = findViewById(R.id.notesList);
+
+        ArrayList<String> list2 = db.getNotes();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, list2);
+
+        list.setAdapter(adapter);
     }
 }

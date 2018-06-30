@@ -21,7 +21,9 @@ public class AddNotes extends AppCompatActivity {
                 EditText note = findViewById(R.id.note);
                 String value = note.getText().toString();
 
-                AddNote(value);
+                DBActivity db = new DBActivity(getApplicationContext());
+
+                db.AddNote(value);
             }
         });
     }
